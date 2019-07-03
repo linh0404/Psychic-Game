@@ -1,5 +1,5 @@
 // setting available choices for the computer
-var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V","W", "X", "Y", "Z"]
+var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V","W", "X", "Y", "Z"];
 
 // set all values to zero
 var wins = 0;
@@ -19,34 +19,48 @@ else {
 }
 
 // random letter to act as the computers choice
-var compGuess = letters[Math.floor(Math.random() * letters.length)];
+
 
 // an event function to note when a choice has been made
-var userGuess = document.onkeyup;
-
 document.onkeyup = function (event) {
     userGuess = event.key;
-    console.log(compGuess)
-    guesses.push(userGuess);
+    var compGuess = letters[Math.floor(Math.random() * letters.length)];
     alert("You chose " + userGuess.toUpperCase())
-}
 
-//if functions to the actions for each scenario
-if (compGuess == userGuess) {
-    win++;
-    guessLeft = 9;
-    guesses = []
-}
 
-if (compGuess != userGuess) {
-    guessLeft--;
-}
+//if functions detailing actions for each scenario
+        if (compGuess == userGuess) {
+            win++;
+            guessLeft = 9;
+            guesses.push(userGuess);
+            }
 
-if (guessLeft == 0) {
-    losses++;
-    guessLeft = 9;
-    guesses = []
-}
+        else if (compGuess != userGuess) {
+            guesses.push(userGuess);
+            guessLeft--;
+        }
+
+        if (guessLeft == 0) {
+            alert("Hmm, the sorting hat is still deciding...");
+            losses++;
+        }
+
+        else if (losses === 9) {
+            alert("Looks like your just another muggle");
+        }
+
+        else if (wins === 10) {
+            alert("Welcome to Hogwarts!")
+        }
+    }
+        var html = 
+            "<p> Wins: " + wins + "</p>";
+            "<p> Losses: " + losses + "</p>";
+            "<p> Guesses remaining: " + guessLeft + "</p>";
+            "<p> You chose: " + userGuess + "</p>";
+
+            document.querySelector("#game").innerHTML = html;
+    
 
 
 
