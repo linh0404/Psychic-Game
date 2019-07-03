@@ -5,7 +5,7 @@ var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", 
 var wins = 0;
 var losses = 0;
 var guessLeft = 9;
-var guesses = [];
+var attempts = [];
 
 var letsplay = confirm ("Are you eligible for enrolment into Hogwarts? Lets play to find out.")
 
@@ -25,18 +25,19 @@ else {
 document.onkeyup = function (event) {
     userGuess = event.key;
     var compGuess = letters[Math.floor(Math.random() * letters.length)];
-    alert("You chose " + userGuess.toUpperCase())
+    console.log(compGuess);
+    console.log(userGuess);
 
 
 //if functions detailing actions for each scenario
-        if (compGuess == userGuess) {
+        if (compGuess == userGuess) {s
             win++;
             guessLeft = 9;
-            guesses.push(userGuess);
+            attempts.push(userGuess);
             }
 
         else if (compGuess != userGuess) {
-            guesses.push(userGuess);
+            attempts.push(userGuess);
             guessLeft--;
         }
 
@@ -54,10 +55,10 @@ document.onkeyup = function (event) {
         }
     }
         var html = 
-            "<p> Wins: " + wins + "</p>";
-            "<p> Losses: " + losses + "</p>";
-            "<p> Guesses remaining: " + guessLeft + "</p>";
-            "<p> You chose: " + userGuess + "</p>";
+            "<p> Wins: " + wins + "</p>" +
+            "<p> Losses: " + losses + "</p>" +
+            "<p> Guesses remaining: " + guessLeft + "</p>" +
+            "<p> You chose: " + attempts + "</p>";
 
             document.querySelector("#game").innerHTML = html;
     
