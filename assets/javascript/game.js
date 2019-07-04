@@ -57,11 +57,15 @@ console.log(compGuess);
         // once losses are at 3, game over
         if (losses === 3) {
             alert("Sorry, it looks like you're just a muggle");
+            var audio = new Audio ("assets/images/introfail.m4a");
+            audio.play();
         }
 
         // once wins are at 3, you're officially enrolled into Hogwarts!
         if (wins === 3) {
             alert("You're a wizard, " + userName + " !");
+            var audio2 = new Audio2 ("assets/images/intro.m4a");
+            audio.play();
         }
 
         var html = 
