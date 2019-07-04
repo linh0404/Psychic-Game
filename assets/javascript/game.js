@@ -56,7 +56,7 @@ console.log(compGuess);
 
         // once losses are at 3, game over
         if (losses === 3) {
-            alert("Looks like you're just another muggle");
+            alert("Sorry, it looks like you're just a muggle");
         }
 
         // once wins are at 3, you're officially enrolled into Hogwarts!
