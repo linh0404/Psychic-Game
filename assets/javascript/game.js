@@ -19,15 +19,17 @@ else {
     alert("Aww, just a squib");
 }
 
-// random letter to act as the computers choice
-compGuess = letters[Math.floor(Math.random() * letters.length)];
+//generate a random letter as the computer's choice
+var  compGuess = letters[Math.floor(Math.random() * letters.length)];
 console.log(compGuess);
 
 // an event function to note when a choice has been made
-document.onkeyup = function (event) {
-    var userGuess = event.key.toUpperCase();
+    document.onkeyup = function (event) {
+    var userGuess = String.fromCharCode(event.keyCode).toUpperCase();
     console.log(userGuess);
-
+    //generate a random letter as the computer's choice
+    var  compGuess = letters[Math.floor(Math.random() * letters.length)];
+    console.log(compGuess);
 
 //if functions detailing actions for each scenario
 
@@ -44,31 +46,31 @@ document.onkeyup = function (event) {
             guessLeft--;
         }
 
+        // scenario once guesses left is 0 i.e. increase loss, clears attempts array and resets no. of guesses
         if (guessLeft === 0) {
             alert("Hmm, the sorting hat is still deciding...");
             losses++;
             attempts = [];
-            guessLeft = 0;
-            location.reload();
+            guessLeft = 9;
         }
 
-        else if (losses === 9) {
+        // once losses are at 3, game over
+        if (losses === 3) {
             alert("Looks like you're just another muggle");
-            location.reload();
         }
 
-        else if (wins === 10) {
+        // once wins are at 3, you're officially enrolled into Hogwarts!
+        if (wins === 3) {
             alert("You're a wizard, " + userName + " !");
-            location.reload();
         }
-}
+
         var html = 
             "<p> Wins: " + wins + "</p>" +
             "<p> Losses: " + losses + "</p>" +
             "<p> Guesses remaining: " + guessLeft + "</p>" +
             "<p> You chose: " + attempts + "</p>";
 
-        document.querySelector("#game").innerHTML = html;
+        document.querySelector("#game").innerHTML = html;}
     
  
 
