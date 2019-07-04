@@ -6,43 +6,49 @@ var wins = 0;
 var losses = 0;
 var guessLeft = 9;
 var attempts = [];
+var compGuess = compGuess;
 
 var letsplay = confirm ("Are you eligible for enrolment into Hogwarts? Lets play to find out.")
 
 if (letsplay) {
     var userName = prompt ("What's your name?");
     alert("What letter am I thinking of? Guess correctly to be accepted");
-    // random letter to act as the computers choice
-    var compGuess = letters[Math.floor(Math.random() * letters.length)];
-    console.log(compGuess);
 }
 
 else {
     alert("Aww, just a squib");
 }
 
+// random letter to act as the computers choice
+compGuess = letters[Math.floor(Math.random() * letters.length)];
+console.log(compGuess);
+
 // an event function to note when a choice has been made
 document.onkeyup = function (event) {
-    userGuess = event.key.toUpperCase();
+    var userGuess = event.key.toUpperCase();
     console.log(userGuess);
 
 
 //if functions detailing actions for each scenario
+
+        // scenario if user guesses correctly i.e. +1 to win, guesses do not decrement and attempt field clears
         if (userGuess === compGuess) {
             wins++;
             guessLeft = 9;
-            var compGuess = letters[Math.floor(Math.random() * letters.length)];
-            console.log(compGuess);
+            attempts = [];
         }
 
-        else if (userGuess != compGuess) {
+        // scenario where guesses incorrectly i.e. pushes incorrect answer to attempts array and decrements no. of turns
+        if (userGuess != compGuess) {
             attempts.push(userGuess);
             guessLeft--;
         }
 
-        else if (guessLeft === 0) {
+        if (guessLeft === 0) {
             alert("Hmm, the sorting hat is still deciding...");
             losses++;
+            attempts = [];
+            guessLeft = 0;
             location.reload();
         }
 
