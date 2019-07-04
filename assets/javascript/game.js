@@ -12,56 +12,58 @@ var letsplay = confirm ("Are you eligible for enrolment into Hogwarts? Lets play
 if (letsplay) {
     var userName = prompt ("What's your name?");
     alert("What letter am I thinking of? Guess correctly to be accepted");
+    // random letter to act as the computers choice
+    var compGuess = letters[Math.floor(Math.random() * letters.length)];
+    console.log(compGuess);
 }
 
 else {
     alert("Aww, just a squib");
 }
 
-// random letter to act as the computers choice
-
-
 // an event function to note when a choice has been made
 document.onkeyup = function (event) {
-    userGuess = event.key;
-    var compGuess = letters[Math.floor(Math.random() * letters.length)];
-    console.log(compGuess);
+    userGuess = event.key.toUpperCase();
     console.log(userGuess);
 
 
 //if functions detailing actions for each scenario
-        if (compGuess == userGuess) {s
-            win++;
+        if (userGuess === compGuess) {
+            wins++;
             guessLeft = 9;
-            attempts.push(userGuess);
-            }
+            var compGuess = letters[Math.floor(Math.random() * letters.length)];
+            console.log(compGuess);
+        }
 
-        else if (compGuess != userGuess) {
+        else if (userGuess != compGuess) {
             attempts.push(userGuess);
             guessLeft--;
         }
 
-        if (guessLeft == 0) {
+        else if (guessLeft === 0) {
             alert("Hmm, the sorting hat is still deciding...");
             losses++;
+            location.reload();
         }
 
         else if (losses === 9) {
-            alert("Looks like your just another muggle");
+            alert("Looks like you're just another muggle");
+            location.reload();
         }
 
         else if (wins === 10) {
-            alert("Welcome to Hogwarts!")
+            alert("You're a wizard, " + userName + " !");
+            location.reload();
         }
-    }
+}
         var html = 
             "<p> Wins: " + wins + "</p>" +
             "<p> Losses: " + losses + "</p>" +
             "<p> Guesses remaining: " + guessLeft + "</p>" +
             "<p> You chose: " + attempts + "</p>";
 
-            document.querySelector("#game").innerHTML = html;
+        document.querySelector("#game").innerHTML = html;
     
-
+ 
 
 
