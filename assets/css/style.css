@@ -1,7 +1,9 @@
-.background {
-    background-image: url(https://wallpaperplay.com/walls/full/3/f/1/155774.jpg#.XR12YYE_8ys.link);
-    background-size: 1600px;
-    overflow: scroll;
+body {
+    background: url(https://wallpaperplay.com/walls/full/3/f/1/155774.jpg#.XR12YYE_8ys.link) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 body {

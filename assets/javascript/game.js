@@ -10,6 +10,7 @@ var compGuess = "";
 
 var letsplay = confirm ("Are you eligible for enrolment into Hogwarts? Lets play to find out.")
 
+// create a reset function so that we set the restart variables
 function reset() {
     guessLeft = 9;
     attempts = [];
@@ -18,6 +19,7 @@ function reset() {
     console.log(compGuess);
 }
 
+//do you want to play? 
 if (letsplay) {
     var userName = prompt ("What's your name?");
     alert("What letter am I thinking of? Guess correctly to be accepted");
@@ -56,7 +58,7 @@ else {
             reset();
         }
 
-        // once losses are at 3, game over
+        // once losses are at 3, game over - queue music...
         if (losses === 3) {
             alert("Sorry, it looks like you're just a muggle");
             var audio = new Audio ("assets/images/introfail.m4a");
@@ -66,7 +68,7 @@ else {
         // once wins are at 3, you're officially enrolled into Hogwarts!
         if (wins === 3) {
             alert("You're a wizard, " + userName + " !");
-            var audio2 = new Audio2 ("assets/images/intro.m4a");
+            var audio = new Audio ("assets/images/intro.m4a");
             audio.play();
         }
 
